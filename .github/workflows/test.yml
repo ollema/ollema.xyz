@@ -1,23 +1,33 @@
-name: test
+name: Deploy to Cloudflare Pages
 
 on:
   push:
     branches:
-      - master
       - main
-  pull_request:
 
 jobs:
-  test:
+  deploy:
+    name: Deploy to Cloudflare Pages
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: erlef/setup-beam@v1
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Set up Gleam
+        uses: erlef/setup-beam@v1
         with:
-          otp-version: "26.0.2"
+          otp-version: "27.0"
           gleam-version: "1.4.1"
           rebar3-version: "3"
-          # elixir-version: "1.15.4"
-      - run: gleam deps download
-      - run: gleam test
-      - run: gleam format --check src test
+      - name: Install dependencies
+        run: gleam deps download
+      - name: Build app
+        run: gleam run -m build
+      - name: Deploy with Wrangler
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name ollema.xyz
