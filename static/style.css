@@ -1,0 +1,32 @@
+:root {
+  --bg-color: #E9E1C3;
+  --text-color: #585148;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'IM Fell English';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/im-fell-english-v14-latin-regular.woff2') format('woff2');
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'IM Fell English', serif;
+}
+
+body > * {
+  max-width: 60ch;
+  margin: 0 auto;
+}
+
+nav > ul {
+  padding: 0;
+}
+
+nav > ul > li {
+  list-style-type: none;
+  /* margin: 0; */
+}

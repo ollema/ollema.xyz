@@ -1,0 +1,22 @@
+---
+id = "parsing-djot"
+title = "Parsing djot with lustre_ssg"
+description = "A post about parsing djot syntax with lustre_ssg"
+---
+# Hello, world!
+
+This is my first post!
+
+## We can write code snippets...
+
+```gleam
+import gleam/io
+
+pub fn main() {
+  io.println("Hello, world!")
+}
+```
+
+## ...and even format text!
+
+This is some text. *This is bold.* This text has some `code` in it.

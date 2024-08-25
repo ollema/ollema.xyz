@@ -1,0 +1,8 @@
+---
+id = "where-to-go-next"
+title = "Where to go next"
+description = "A post about where to go next after reading this post"
+---
+# Where to go next
+
+Please refer to the `lustre_ssg` [documentation](https://hexdocs.pm/lustre_ssg/index.html) for more information.
